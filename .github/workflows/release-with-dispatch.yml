@@ -40,7 +40,7 @@ jobs:
         id: get_pr
 
   merge:
-    uses: joinmisskey/release-actions/.github/workflows/merge.yml@main
+    uses: joinmisskey/release-actions/.github/workflows/merge.yml@old-v1
     needs: get-pr
     if: ${{ needs.get-pr.outputs.pr_number != '' && inputs.merge == true }}
     with:
@@ -70,7 +70,7 @@ jobs:
       RULESET_EDIT_APP_PRIVATE_KEY: ${{ secrets.RULESET_EDIT_APP_PRIVATE_KEY }}
 
   create-prerelease:
-    uses: joinmisskey/release-actions/.github/workflows/create-prerelease.yml@main
+    uses: joinmisskey/release-actions/.github/workflows/create-prerelease.yml@old-v1
     needs: get-pr
     if: ${{ needs.get-pr.outputs.pr_number != '' && inputs.merge != true  }}
     with:
@@ -84,7 +84,7 @@ jobs:
       RELEASE_APP_PRIVATE_KEY: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
 
   create-target:
-    uses: joinmisskey/release-actions/.github/workflows/create-target.yml@main
+    uses: joinmisskey/release-actions/.github/workflows/create-target.yml@old-v1
     needs: get-pr
     if: ${{ needs.get-pr.outputs.pr_number == '' }}
     with:
