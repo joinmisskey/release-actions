@@ -28,16 +28,19 @@ jobs:
         env:
           STABLE_BRANCH: ${{ vars.STABLE_BRANCH }}
       - name: Get target version
+        if: steps.get_pr.outputs.pr_number != ''
         uses: joinmisskey/release-actions/.github/actions/get-target-version@main
         id: v
       # CHANGELOG.mdの内容を取得
       - name: Get changelog
+        if: steps.get_pr.outputs.pr_number != ''
         uses: joinmisskey/release-actions/.github/actions/get-changelog@main
         with:
           version: ${{ steps.v.outputs.target_version }}
         id: changelog
       # PRのnotesを更新
       - name: Update PR
+        if: steps.get_pr.outputs.pr_number != ''
         run: |
           gh pr edit "$PR_NUMBER" --body "$CHANGELOG"
         env:

@@ -33,10 +33,6 @@ on:
         description: 'App ID for app to create release'
       RELEASE_APP_PRIVATE_KEY:
         description: 'Private key for app to create release'
-      RULESET_EDIT_APP_ID:
-        description: 'App ID for app to edit rulesets'
-      RULESET_EDIT_APP_PRIVATE_KEY:
-        description: 'Private key for app to edit rulesets'
 
 permissions:
   contents: write
@@ -120,7 +116,7 @@ jobs:
       - name: Commit version
         run: |
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -am "[skip ci] Release: $TARGET_VERSION"
+            git commit -am "Release: $TARGET_VERSION"
             git push
           fi
         env:

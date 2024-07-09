@@ -1,6 +1,18 @@
 CHANGELOG
 =======================================
 
+## 2024.7.0
+
+### General
+- Fix aaa
+
+### Client
+- uuu
+
+### Server
+- ooo
+
+
 ## 2024.6.2
 
 ### General
